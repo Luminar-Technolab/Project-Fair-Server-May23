@@ -1,0 +1,66 @@
+
+
+            Mongodb
+        -----------------
+
+    1. Database used to store data permanently
+    2. Difference SQL Vs Mongodb
+            SQL                                 MongoDB 
+     -------------------------            -------------------------
+     - Relational/SQL DBMS               - Document Oriented / NOSQL DB
+     - store in Table with row &         - Collection of JSON Document
+       column   
+     - uses fixed Schema                 - uses dynamic Schema
+     - optimized for complex joins       - optimized for Scalability and 
+       and transactions                    performance
+     - support rich set of data types    - limited set of data types
+       declarative query language        - Expreesive query language based 
+                                           on JSON
+     - ACID (Atomicity,Consistancy,      - NoSQL based on CAP (Consistancy,  
+       Isolation and Durability)           Availability and Partition Tolerance) 
+       property                
+     - uses Traditional bussiness        - used in big data and real time web 
+       Application                         Application   
+    3. CRUD Operations
+      - create : 
+        - insertMany()
+        - insertOne()
+      - Read :
+        - find()
+        - findOne()
+      - Update :
+        - updateMany()
+        - updateOne()
+      - Delete
+        - deleteMany()
+        - deleteOne()
+    4. Complex query
+      - $eq / $neq
+      - $gt / $gte /$lt / $lte
+      - $expr
+      - $push
+      - $pull
+      - $set
+      - $unset
+      - $exists
+      - $or / $and
+      - $in / $nin
+      - sort()
+      - count()
+      - limit()
+    5. Aggregation : to join different Collection
+      - $lookup :
+        aggregate({
+          $lookup:
+            {
+              from: <collection to join>,
+              localField: <field from the input documents>,
+              foreignField: <field from the documents of the "from" collection>,
+              as: <output array field>
+            }
+        })
+    6. Data Modeling : 
+      - Schema : structure of data to be stored
+      - validation
+
+  

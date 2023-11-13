@@ -1,0 +1,108 @@
+
+
+                Node JS
+            --------------
+
+    1. Runtime Environment + JS Library for JS
+    2. Features
+        - Extremely Faster 
+        - Asynchrous 
+        - Single Threaded with event loop
+        - Highly Scalable
+        - Open Source
+    3. Node js Global Objects
+        - It can access anywhere from node js app with out exporting /importing
+        - ex: console.log(), setTimeout(),...
+    4. Node js Module Sysytem
+        - Each file in nodejs can consider as seperate Module. to reuse these module in another module use export and import statements
+        - to import module: use function require('module')
+        - to export module:
+            - use keyword module.exports /exports
+        - Built in module : 
+            - fs : file Sysytem - handling file related events
+            - http : generating http request
+            - https : generating https request
+            - events : work with EventEmitter
+            - crypto : providing tool like hashing,encryption etc
+            - process : used to provide currently running process
+                - environmental variable
+    5. Node js Packages
+        - use to help solving common problems
+        - collection of node module with package.json
+        - to install Packages using npm
+        - package.json file : npm configuaration file for a project
+        - package-lock.json : to hold version of packages installed in a project
+        - node_modules : to hold the copies of installed packages in a project
+    6. Backend Concept
+        - Client-Server Architecture : sending request and response via http
+        - API : Application programming interface
+        - REST API : only pass http request with json data
+        - CRUD : create (POST) , read (GET), update (PUT) and delete (DELETE)
+        - CORS : Cross Origin resource Shairing Protocol
+
+               
+    Express JS
+    -----------
+
+    1. Framework of Node js for Client-server Application
+    2. Create a folder server
+    3. Inside server folder create package.json file using command : npm init -y
+    4. Include "start":"node index.js" in scripts  of package.json file
+    5. Install packages for creating express server
+        - install express : npm i express
+        - install cors : npm i cors
+        - install dotenv : npm i dotenv
+    6. create file .env ins server folder. 
+        - dotenv package : used to load .env file having environmental variable (variable will get the value only at the time execution) in your project
+    7. create .gitignore file to add modules to ignore while adding to git
+        - add node_modules and .env to gitignore file
+    8. create index.js file in server folder
+    9. Define express server in index.js file
+        - import dotenv package inorder to load .env file
+        - import express package 
+        - import cors 
+        - create express server
+        - use cors in server app
+        - parse json data using server app
+        - customise port for server app
+        - to run server app use listen()
+    10. Create folder for db connection
+        - add connection string in .env file
+        - create a js file to define connection between node and mongodb 
+            - import mongoose
+            - get connection string from process env variable
+            - connect node app with mongodb using mongoose
+            - import connection.js file in index.js file
+    11. Create Routes for server Application : to set up path to resolve client request
+        - create a js file define different routes of server
+            - import express
+            - create router for express app using Router object
+            - define different routes for server app
+            - export router 
+            - import router in index.js file
+            - use router in server app
+    12. Create Controller folder to define logic to solve client request
+        - create a js file to define the logic
+    13. Create a folder for defining structure of data to be stored in db using Models  
+        - create js file for each model
+            - import mongoose
+            - define schema using mongoose
+            - create model for that schema
+            - export model
+    14. To authorise client data
+        - import jsonwebtoken  : npm i jsonwebtoken
+        - sign: used to generate token
+        - verify: used to verify token
+
+
+    Mongoose - Nodejs Module
+    ---------
+
+    1. MongoDB ODM (Object database Modelling) that is used to translate the code and   its representation from MongoDB to the Node.js server.
+    2. Installing Module: npm install mongoose
+    3. Using mongoose , it connect the node app with mongodb 
+    4. Schema : Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
+    5. Model :  
+
+            
+    
