@@ -93,6 +93,14 @@
         - import jsonwebtoken  : npm i jsonwebtoken
         - sign: used to generate token
         - verify: used to verify token
+    15. Middleware: is a function used to control request and response cycle
+        - to create Middleware use a function with 3 arguments: req,res,next
+        - next method used to redirect to user request
+        - 2 types
+            - Application Middleware : all http request will pass through Application Middleware
+            - Route specific Middleware : Middleware will active only for certain routes
+    16. Multer : Multer is a node.js middleware for handling multipart/form-data, which is primarily used for uploading files
+        - Multer adds a body object and a file or files object to the request object. The body object contains the values of the text fields of the form, the file or files object contains the files uploaded via the form.
 
 
     Mongoose - Nodejs Module
@@ -102,7 +110,21 @@
     2. Installing Module: npm install mongoose
     3. Using mongoose , it connect the node app with mongodb 
     4. Schema : Each schema maps to a MongoDB collection and defines the shape of the documents within that collection.
-    5. Model :  
+    5. Model :  similar as collection in mongodb
+
+    Multer : Handling multipart/form-data
+    -------------------------------------
+
+    1. install multer : npm i multer
+    2. create js file to use multer
+        - import multer
+        - create uploads folder to hold uploading file
+        - define storage for uploaded file
+         - diskStorage : to define folder to store uploaded file
+         - fileFilter
+        - export the multer
+
+
 
             
     

@@ -8,6 +8,7 @@ const cors = require('cors')
 const router = require('./Routes/routes')
 //import db
 require('./DB/connection')
+// const middlewares = require('./Middlewares/appMiddleware')
 
 //to create express server
 const pfServer = express()
@@ -16,6 +17,7 @@ const pfServer = express()
 pfServer.use(cors())
 //parse json data using server app
 pfServer.use(express.json())
+// pfServer.use(middlewares.appMiddleware)
 //use router 
 pfServer.use(router)
 
