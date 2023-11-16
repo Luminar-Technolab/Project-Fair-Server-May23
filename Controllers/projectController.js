@@ -1,8 +1,54 @@
+const projects = require('../Models/projectSchema')
+
 //add project
-exports.addProject =  (req,res)=>{
+exports.addProject = async (req,res)=>{
     console.log("Inside add project function");
     const {title,languages,github,website,overview,userId} = req.body
     const projectImage = req.file.filename
-    console.log(`${title}, ${languages}, ${github}, ${website}, ${overview},${projectImage}, ${userId}`);
-    res.status(200).json("Add project request recieved...")
+    // console.log(`${title}, ${languages}, ${github}, ${website}, ${overview},${projectImage}, ${userId}`);
+    try{
+        const existingProject = await projects.findOne({github})
+        if(existingProject){
+            res.status(406).json("Project already exists...")
+        }else{
+            const newProject = new projects({
+                title,languages,github,website,overview,projectImage,userId
+            })
+            await newProject.save()
+            res.status(200).json(newProject)
+        }
+    }catch(err){
+        res.status(401).json(`Error!!! Transaction failed: ${err}`)
+    }
+}
+
+//get user all projects
+exports.getAllUserProjects = async (req,res)=>{
+    const userId = req.payload
+    try{
+        const userProjects = await projects.find({userId})
+        res.status(200).json(userProjects)
+    }catch(err){
+        res.status(401).json(`Error!!! Transaction failed: ${err}`)
+    }
+}
+
+//get home projects
+exports.getHomeProjects = async (req,res)=>{
+    try{
+        const homeProjects = await projects.find().limit(3)
+        res.status(200).json(homeProjects)
+    }catch(err){
+        res.status(401).json(`Error!!! Transaction failed: ${err}`)
+    }
+}
+
+//get all projects
+exports.getallprojects = async (req,res)=>{
+    try{
+        const allProjects = await projects.find()
+        res.status(200).json(allProjects)
+    }catch(err){
+        res.status(401).json(`Error!!! Transaction failed: ${err}`)
+    }
 }
