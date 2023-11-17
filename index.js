@@ -24,6 +24,9 @@ pfServer.use(router)
 //customise port for server app
 const PORT = 4000 || process.env.PORT
 
+//export uploads folder
+pfServer.use('/uploads',express.static('./uploads'))
+
 //to run server app
 pfServer.listen(PORT,()=>{
     console.log(`Project Fair Server Started at port: ${PORT}`);
