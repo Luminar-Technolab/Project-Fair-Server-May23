@@ -45,8 +45,12 @@ exports.getHomeProjects = async (req,res)=>{
 
 //get all projects
 exports.getallprojects = async (req,res)=>{
+    const searchKey = req.query.search
+    const query = {
+        languages:{$regex:searchKey, $options:"i"}
+    }
     try{
-        const allProjects = await projects.find()
+        const allProjects = await projects.find(query)
         res.status(200).json(allProjects)
     }catch(err){
         res.status(401).json(`Error!!! Transaction failed: ${err}`)
@@ -69,4 +73,15 @@ exports.editProject = async (req,res)=>{
         res.status(401).json(`Error!!! Transaction failed: ${err}`)
     }
 
+}
+
+//deleteProject
+exports.deleteProject = async (req,res)=>{
+    const {id} = req.params
+    try{
+        const removeProject = await projects.findByIdAndDelete({_id:id})
+        res.status(200).json(removeProject)
+    }catch(err){
+        res.status(401).json(`Error!!! Transaction failed: ${err}`)
+    }
 }
