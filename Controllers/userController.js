@@ -47,3 +47,20 @@ exports.login = async (req,res)=>{
         res.status(401).json(`Error!!! Transaction failed: ${err}`)
     }
 }
+
+//profile update
+exports.updateProfile = async (req,res)=>{
+    const {username,email,password,github,linkedin,profileImage}=req.body
+    const userId = req.payload
+    console.log(req.file);
+    const userImage = req.file?req.file.filename:profileImage
+
+    try{
+        const updatingUser = await users.findByIdAndUpdate({_id:userId},{
+            username,email,password,image:userImage,github,linkedin
+        },{new:true})
+        res.status(200).json(updatingUser)
+    }catch(err){
+        res.status(401).json(err)
+    }
+}
